@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package penagihanasli;
+package Main.Tertagih;
 
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author ACER
  */
-public class input_tertagih extends javax.swing.JFrame {
+public class Tertagih extends javax.swing.JFrame {
 
     /**
      * Creates new form input_tertagih
      */
-    public input_tertagih() {
+    public Tertagih() {
         initComponents();
     }
 
@@ -255,15 +255,6 @@ public class input_tertagih extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        try {
-        String sql = "INSERT INTO tertagih VALUES ('"+jLabel2.getText()+"','"+jComboBox1.getSelectedItem()+"','"+jTextField2.getText()+"','"+jComboBox2.getSelectedItem()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"')";
-        java.sql.Connection con=(Connection)config.koneksi();
-        java.sql.PreparedStatement pst=con.prepareStatement(sql);
-        pst.execute();
-        JOptionPane.showConfirmDialog(null, "Penyimpanan Data Berhasil");
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(this, e.getMessage());
-        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -283,20 +274,21 @@ public class input_tertagih extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(input_tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(input_tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(input_tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(input_tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tertagih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new input_tertagih().setVisible(true);
+                new Tertagih().setVisible(true);
             }
         });
     }
