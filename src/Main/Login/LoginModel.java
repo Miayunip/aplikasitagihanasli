@@ -7,7 +7,7 @@ package Main.Login;
 
 /**
  *
- * @author Aziz Fikri
+ * @author Acer
  */
 
 // import some needed library
@@ -19,7 +19,7 @@ public class LoginModel {
     
     private static final String DB_URL = "jdbc:mysql://localhost/penagihan";
     private static final String DB_USER = "root";
-    private static final String DB_PASS = "IkiJenengePword"; // Password sql saya
+    private static final String DB_PASS = ""; // Password sql saya
     
     private String uName;
     private String pWord;

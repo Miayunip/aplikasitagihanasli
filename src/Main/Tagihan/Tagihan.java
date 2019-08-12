@@ -56,35 +56,38 @@ public class Tagihan extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 204));
         jLabel1.setText("INPUT TAGIHAN");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel2.setText("User");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel3.setText("Nomor Surat");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel4.setText("Tanggal Surat");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel5.setText("Jenis Tagihan ");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel6.setText("Kategori Tagihan");
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel7.setText("Status");
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel8.setText("Nama Tagihan");
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel9.setText("Jumlah Tagihan");
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jButton1.setText("jButton1");
 
+        jTable2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -98,11 +101,11 @@ public class Tagihan extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harian", "Mingguan", "Bulanan", "Ulang", "Lainnya", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,26 +113,26 @@ public class Tagihan extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Penanggunaan Ruang Tunggu", "Penggunaan checkin Counter", "Penggunaan Ruang", "Penggunaan Listrik", "Penggunaan Air", "Penggunaan Apron", "Reklame", " ", " " }));
+        jComboBox2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Penggunaan Ruang Tunggu", "Penggunaan checkin Counter", "Penggunaan Ruang", "Penggunaan Listrik", "Penggunaan Air", "Penggunaan Apron", "Reklame", " ", " " }));
 
-        jTextField7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
 
-        jTextField8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextField8.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
 
-        jComboBox3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jComboBox3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dibayar", "Tunggakan", " " }));
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jButton2.setText("Edit");
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jButton3.setText("Print");
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jButton4.setText("New");
 
-        jButton5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jButton5.setText("Save");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -143,48 +146,52 @@ public class Tagihan extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(99, 99, 99)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel9))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel3))
                                 .addGap(84, 84, 84)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField7)
-                                    .addComponent(jTextField8))
-                                .addGap(34, 34, 34)
-                                .addComponent(jButton4)))
-                        .addGap(0, 77, Short.MAX_VALUE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jButton5)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(jButton2)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jButton3))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(81, 81, 81)
+                                        .addComponent(jButton4)))))
+                        .addGap(0, 621, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jButton5)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(33, 33, 33)
@@ -214,21 +221,14 @@ public class Tagihan extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
                             .addComponent(jButton2)
-                            .addComponent(jButton3)
-                            .addComponent(jButton5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(57, 57, 57)))
+                            .addComponent(jButton3))
+                        .addGap(35, 35, 35)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -240,7 +240,7 @@ public class Tagihan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
