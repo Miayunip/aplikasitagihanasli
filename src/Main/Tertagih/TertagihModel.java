@@ -35,6 +35,10 @@ public class TertagihModel {
             System.err.println(ex);
         }
     }
+    
+    public void closeConnection() {
+        try { conn.close(); } catch(SQLException ex) {}
+    }
 
     String[][] setTabelTertagih(int row, int col) {
         String id_tertagih;
@@ -45,7 +49,7 @@ public class TertagihModel {
         String no_tlp;
         String penanggung_jawab;
 
-        String query = "SELECT * FROM `tertagih`";
+        String query = "SELECT * FROM `tertagih` ORDER BY id_tertagih DESC";
         String[][] datas = new String[row][col];
         int Row = 0;
         openConnection();
@@ -54,7 +58,7 @@ public class TertagihModel {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                if (Row == 4) {
+                if (Row == 10) {
                     break;
                 }
                 int id = rs.getInt("id_tertagih");
@@ -72,18 +76,16 @@ public class TertagihModel {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
 
-        } 
+        }
         return datas;
     }
-        
 
     public boolean store(boolean isNew, String nama, String kategori, String keterangan, String status, long noTelp, String penanggungJawab, int id) {
         String create = "INSERT INTO `tertagih` (nama_tertagih, kategori_tertagih, keterangan, status_tertagih, no_tlp, penanggung_jawab) values(?,?,?,?,?,?)";
-        String update = "UPDATE `tertagih` SET nama_tertagih=?, kategori_tertagih=?, keterangan=?, status_tertagih=?, no_tlp=?, penanggung_jawab=? WHERE id_tertagih='1'";
+        String update = "UPDATE `tertagih` SET nama_tertagih=?, kategori_tertagih=?, keterangan=?, status_tertagih=?, no_tlp=?, penanggung_jawab=? WHERE id_tertagih='" + id + "'";
 
-    
         openConnection();
-        
+
         try {
             PreparedStatement st;
 
@@ -107,13 +109,36 @@ public class TertagihModel {
 
             st.execute();
             System.out.println("Success");
+            
+            closeConnection();
+            
             return true;
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             return false;
         }
     }
-    
+
+    // delete method, for deeting item from database
+    public boolean delete(int id) {
+        String delete = "DELETE FROM `tertagih` WHERE id_tertagih='" + id + "'";
+        
+        openConnection();
+        
+        try {
+            PreparedStatement st = conn.prepareStatement(delete);
+            
+            
+            st.execute();
+            closeConnection();
+            return true;
+        } catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+            closeConnection();
+            return false;
+        }
+    }
+
 }
 
 /**

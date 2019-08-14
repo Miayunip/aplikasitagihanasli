@@ -5,6 +5,7 @@
  */
 package Main.Pembayaran;
 
+import Main.Tertagih.TertagihModel;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -14,11 +15,49 @@ import javax.swing.JOptionPane;
  */
 public class Pembayaran extends javax.swing.JFrame {
 
+    PembayaranModel tm = new PembayaranModel();
+    
+    String[][] isiTabel;
+    
+    int row;
+    int col;
+    
+    boolean isNew = false;
+    
+    int id = 0;
+    
+    String level;
     /**
      * Creates new form input_pembayaran
      */
     public Pembayaran() {
         initComponents();
+        initTabel();
+    }
+    
+    public Pembayaran(String level) {
+        initComponents();
+        initTabel();
+        
+        this.level = level;
+    }
+    
+    public void initTabel() {
+        /**
+         * Mengisi tabel yang ada pada form dengan data dari database pengisian
+         * diletakkan disini agar saat pertama diload, tabel langsung terisi
+         */
+        row = tabelPembayaran.getRowCount();
+        col = tabelPembayaran.getColumnCount();
+        
+        // pengisian array isitabel dengan data yang sudah diambil dari database
+        isiTabel = tm.setTabelPembayaran(row, col); // belum ada methodnya
+        
+        for (int i = 0; i < isiTabel.length; i++){
+            for (int j = 0; j < isiTabel[i].length; j++){
+                tabelPembayaran.setValueAt(isiTabel[i][j], i, j);
+            }
+        }
     }
 
     /**
@@ -34,17 +73,16 @@ public class Pembayaran extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        noKwitansi = new javax.swing.JTextField();
+        jumlahBayar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelPembayaran = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jextField1 = new javax.swing.JFormattedTextField();
+        tanggalPembayaran = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -52,59 +90,56 @@ public class Pembayaran extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("No_Kwitansi");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Tanggal_pembayaran");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Jumlah bayar");
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        noKwitansi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jumlahBayar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jumlahBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jumlahBayarActionPerformed(evt);
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelPembayaran.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        tabelPembayaran.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "No_Kwitansi", "Tanggal pembayaran", "Jumlah bayar"
+                "id", "No_Kwitansi", "Tanggal pembayaran", "jumlah bayar"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelPembayaran);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Save");
-
-        jButton2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
-        jButton2.setText("Edit");
-        jButton2.setToolTipText("");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Print");
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setText("create");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,10 +147,10 @@ public class Pembayaran extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("User");
 
-        jButton5.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setText("Menu Utama");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,12 +158,12 @@ public class Pembayaran extends javax.swing.JFrame {
             }
         });
 
-        jextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jextField1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        tanggalPembayaran.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        tanggalPembayaran.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("INPUT PEMBAYARAN");
@@ -155,16 +190,16 @@ public class Pembayaran extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jButton1)
-                .addGap(106, 106, 106)
-                .addComponent(jButton2)
-                .addGap(113, 113, 113)
+                .addGap(66, 66, 66)
                 .addComponent(jButton3)
-                .addGap(0, 303, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jButton4)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,18 +212,12 @@ public class Pembayaran extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jextField1))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jumlahBayar, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                    .addComponent(tanggalPembayaran)
+                                    .addComponent(noKwitansi))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
@@ -211,21 +240,20 @@ public class Pembayaran extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(noKwitansi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tanggalPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(jumlahBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -236,48 +264,53 @@ public class Pembayaran extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 24, Short.MAX_VALUE)
+                .addGap(0, 31, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        //menampilkan data kedalam form pembayaran
-    }//GEN-LAST:event_jButton2MouseClicked
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
-        new menu.Admin.Admin().setVisible(true);
-     dispose();
-        new menu.Kasubag.Kasubag().setVisible(true);
-     dispose();
-        new menu.StaffTU.StaffTU().setVisible(true);
-     dispose();
+        if (level.equalsIgnoreCase("Admin")) {
+            new menu.Admin.Admin().setVisible(true);
+        } else if (level.equalsIgnoreCase("Kasubag")) {
+            new menu.Kasubag.Kasubag().setVisible(true);
+        } else if (level.equalsIgnoreCase("staff_tu")) {
+            new menu.StaffJasa.StaffJasa().setVisible(true);
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        isNew = true;
+       
+       noKwitansi.setText("");
+       tanggalPembayaran.setText("");
+       jumlahBayar.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jumlahBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahBayarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jumlahBayarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (noKwitansi.getText().equals("") && tanggalPembayaran.getText().equals("") && jumlahBayar.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Masih ada kolom kosong!");
+        } else {
+            tm.store(isNew,noKwitansi.getText(), tanggalPembayaran.getText(), jumlahBayar.getText(), id);
+            initTabel();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,7 +350,6 @@ public class Pembayaran extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -329,9 +361,9 @@ public class Pembayaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JFormattedTextField jextField1;
+    private javax.swing.JTextField jumlahBayar;
+    private javax.swing.JTextField noKwitansi;
+    private javax.swing.JTable tabelPembayaran;
+    private javax.swing.JFormattedTextField tanggalPembayaran;
     // End of variables declaration//GEN-END:variables
 }
